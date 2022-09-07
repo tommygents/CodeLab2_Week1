@@ -7,6 +7,7 @@ public class BallSpawner : MonoBehaviour
 
     
     public Sprite[] ballSprites;
+    public Sprite[] ringSprite;
     private float spawnRangeX = 5;
     private float spawnRangeY = 5;
 
@@ -21,7 +22,9 @@ public class BallSpawner : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        Invoke("spawnBalls",1);
+        spawnBalls();
+        spawnRing();
+
     }
 
     // Update is called once per frame
@@ -54,6 +57,15 @@ public class BallSpawner : MonoBehaviour
             color.sprite = ball;
 
         }
+    }
+
+    void spawnRing()
+    {
+        Vector3 spawnpos = new Vector3(rightBound - 2, Random.Range(-spawnRangeY, spawnRangeY), 0);
+        GameObject rgo = Instantiate(Resources.Load("Prefabs/Ring")) as GameObject;
+        rgo.transform.position = spawnpos;
+       SpriteRenderer ring = rgo.GetComponent<SpriteRenderer>();
+        ring.sprite = ringSprite[0];
     }
 
     void shootBall() 
