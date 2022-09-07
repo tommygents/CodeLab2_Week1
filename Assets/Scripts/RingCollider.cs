@@ -22,6 +22,13 @@ public class RingCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Destroy Collision");
+        if (other.name == "Target")
+        {
+            Debug.Log("Target Hit");
+            // increment the score
+            // wipe the board
+            // re-instantiate everything
+        }
         Destroy(other.gameObject);
     }
 
