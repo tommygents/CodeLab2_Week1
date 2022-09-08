@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceApplier : MonoBehaviour
-
-     
+public class ColliderReversal : MonoBehaviour
 {
-
-    private int direction;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +19,13 @@ public class ForceApplier : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
 
+
+        RigidBody2D rb = other.GetComponent<RigidBody2D>();
+        Vector2 vel = rb.velocity;
+        Vector2 n_vel = 
+
     }
 
+
 }
+

@@ -6,11 +6,11 @@ public class RingCollider : MonoBehaviour
 {
     public Rigidbody2D rb;
     private Collider rc;
-
+    private GameObject spawner;
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawner = GameObject.Find("Spawner");
     }
 
     // Update is called once per frame
@@ -21,15 +21,20 @@ public class RingCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Destroy Collision");
-        if (other.name == "Target")
+        
+       
+        if (other.tag == "Target")
         {
             Debug.Log("Target Hit");
-            // increment the score
+
+            spawner.GetComponent<BallSpawner>().score++;
+            spawner.GetComponent<BallSpawner>().reset = true;
+            
+            
             // wipe the board
-            // re-instantiate everything
         }
-        Destroy(other.gameObject);
+        // Destroy(other.gameObject);
+
     }
 
 }
